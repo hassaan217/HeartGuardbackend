@@ -2,12 +2,20 @@ import pandas as pd
 import numpy as np
 import joblib
 from sklearn.preprocessing import StandardScaler
+import os
+import joblib
+
+# Get directory of this file (api/)
+BASE_DIR = os.path.dirname(__file__)
+
+# Load model with relative path
+
 
 # Load trained model, scaler, and feature columns
 def load_model():
     try:
-        model = joblib.load("log_model.pkl")
-        scaler = joblib.load("scaler.pkl")
+        model = joblib.load(os.path.join(BASE_DIR, "rf_model.pkl"))
+        scaler = joblib.load(os.path.join(BASE_DIR, "scaler.pkl"))
         feature_columns = joblib.load("feature_columns.pkl")
         return model, scaler, feature_columns
     except FileNotFoundError as e:
