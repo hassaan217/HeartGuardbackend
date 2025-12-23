@@ -16,11 +16,12 @@ def load_model():
     try:
         model = joblib.load(os.path.join(BASE_DIR, "rf_model.pkl"))
         scaler = joblib.load(os.path.join(BASE_DIR, "scaler.pkl"))
-        feature_columns = joblib.load("feature_columns.pkl")
+        feature_columns = joblib.load(os.path.join(BASE_DIR, "feature_columns.pkl"))
         return model, scaler, feature_columns
     except FileNotFoundError as e:
-        print(f"Model files not found: {e}")
-        return None, None, None
+        print(f"❌ Model files not found: {e}")
+        raise
+
 
 # Preprocess input data - FIXED with EXACT feature order
 def preprocess_input(input_data, feature_columns, scaler):
