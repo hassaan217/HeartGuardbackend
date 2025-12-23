@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import uvicorn
-from heart_model import predict
+from .heart_model import predict
 
 app = FastAPI(title="Heart Disease Prediction API", 
               description="API for predicting heart disease risk",
